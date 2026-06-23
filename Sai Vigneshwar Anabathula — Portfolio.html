@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)file:///C:/Users/saivi/Downloads/portfolio.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Vigneshwar Anabathula — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Sai Vigneshwar Anabathula — Portfolio_files/css2" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#000;color:#fff;font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+  ::-webkit-scrollbar{width:3px;}
+  ::-webkit-scrollbar-thumb{background:#222;}
+
+  @keyframes tileGlow{0%{opacity:.35}100%{opacity:1}}
+  @keyframes orbPulse{0%{transform:translate(135px,-66px) scale(.9);opacity:.7}100%{transform:translate(135px,-66px) scale(1.1);opacity:1}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .3s;padding:0 clamp(20px,5vw,72px);}
+  nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.04);}
+  .nav-inner{max-width:1080px;margin:0 auto;height:58px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:'DM Mono',monospace;font-size:.85rem;color:rgba(255,255,255,.5);letter-spacing:.04em;}
+  .logo span{color:#fff;}
+  .nav-links{display:flex;gap:34px;}
+  .nav-btn{background:none;border:none;color:rgba(255,255,255,.38);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.8rem;letter-spacing:.06em;padding:6px 0;transition:color .2s;}
+  .nav-btn:hover,.nav-btn.act{color:#fff;}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:4px;padding:4px;}
+  .hamburger span{display:block;width:20px;height:1.5px;background:#fff;border-radius:1px;}
+  .mob-menu{display:none;background:#0a0a0a;border-top:1px solid rgba(255,255,255,.05);padding:20px clamp(20px,5vw,72px);flex-direction:column;gap:20px;}
+  .mob-menu.open{display:flex;}
+
+  .section{padding:90px clamp(20px,5vw,72px);border-top:1px solid rgba(255,255,255,.04);position:relative;}
+  .inner{max-width:1080px;margin:0 auto;}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:12px;}
+  .headline{font-family:'DM Sans',sans-serif;font-weight:600;font-size:clamp(1.9rem,3.8vw,2.8rem);color:#fff;line-height:1.15;}
+  .body-txt{color:rgba(255,255,255,.42);font-size:.9rem;line-height:1.8;}
+
+  .pill-btn{background:#fff;color:#000;border:none;border-radius:50px;padding:12px 28px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:opacity .2s,transform .15s;text-decoration:none;display:inline-block;}
+  .pill-btn:hover{opacity:.85;transform:scale(.97);}
+  .ghost-btn{background:transparent;color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:11px 26px;font-family:'DM Sans',sans-serif;font-size:.88rem;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block;}
+  .ghost-btn:hover{color:#fff;border-color:rgba(255,255,255,.45);}
+
+  .chip{display:inline-block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:5px 13px;font-family:'DM Mono',monospace;font-size:.74rem;color:rgba(255,255,255,.62);transition:all .2s;}
+  .chip:hover{background:rgba(255,255,255,.09);color:#fff;border-color:rgba(255,255,255,.18);}
+
+  /* HERO */
+  #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px clamp(20px,5vw,72px) 60px;max-width:1080px;margin:0 auto;position:relative;}
+  .hero-text{animation:fadeUp .9s ease both;}
+  .arc-wrap{position:relative;width:100%;height:260px;perspective:900px;perspective-origin:50% 60%;margin-bottom:40px;}
+  .arc-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .tile{position:absolute;width:9px;height:52px;border-radius:2px;box-shadow:0 0 6px rgba(255,255,255,.06);}
+  .orb{position:absolute;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(255,255,255,.05) 70%);box-shadow:0 0 50px 16px rgba(255,255,255,.2);transform:translate(135px,-66px);animation:orbPulse 3s ease-in-out infinite alternate;}
+  .hero-title{font-family:'DM Sans',sans-serif;font-weight:600;font-size:clamp(2.8rem,6.5vw,5rem);line-height:1.07;color:#fff;margin-bottom:20px;}
+  .hero-sub{color:rgba(255,255,255,.38);font-size:clamp(.9rem,1.8vw,1.1rem);max-width:480px;line-height:1.72;margin-bottom:40px;}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  .cursor{animation:blink .9s infinite;color:#fff;}
+
+  /* ABOUT */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .info-table{background:#0d0d0d;border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;}
+  .info-row{display:flex;padding:18px 24px;border-bottom:1px solid rgba(255,255,255,.04);}
+  .info-row:last-child{border-bottom:none;}
+  .info-key{font-family:'DM Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.24);text-transform:uppercase;letter-spacing:.1em;min-width:100px;padding-top:2px;}
+  .info-val{color:rgba(255,255,255,.72);font-size:.86rem;}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .skill-card{background:#0d0d0d;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:24px 26px;transition:border-color .25s;transform-style:preserve-3d;}
+  .skill-card:hover{border-color:rgba(255,255,255,.13);}
+  .skill-cat{font-family:'DM Mono',monospace;font-size:.66rem;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.14em;margin-bottom:16px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+
+  /* EXPERIENCE */
+  .exp-list{display:flex;flex-direction:column;gap:14px;}
+  .exp-card{background:#0d0d0d;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px 30px;transition:border-color .25s,box-shadow .25s;transform-style:preserve-3d;}
+  .exp-card:hover{border-color:rgba(255,255,255,.14);box-shadow:0 12px 40px rgba(0,0,0,.5);}
+  .exp-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+  .exp-role{font-family:'DM Sans',sans-serif;font-weight:600;font-size:.98rem;color:#fff;}
+  .exp-co{color:rgba(255,255,255,.3);font-size:.82rem;margin-top:4px;}
+  .exp-period{font-family:'DM Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.24);}
+  .exp-pts{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .exp-pt{display:flex;gap:12px;color:rgba(255,255,255,.46);font-size:.86rem;line-height:1.65;}
+  .exp-dash{color:rgba(255,255,255,.18);flex-shrink:0;}
+
+  /* CERTIFICATIONS */
+  .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .cert-card{background:#0d0d0d;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;min-height:180px;position:relative;overflow:hidden;transition:box-shadow .3s,border-color .3s;transform-style:preserve-3d;cursor:default;}
+  .cert-card.linkable{cursor:pointer;}
+  .cert-top-bar{position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;opacity:.5;transition:opacity .3s;}
+  .cert-card:hover .cert-top-bar{opacity:1;}
+  .cert-shine{position:absolute;inset:0;border-radius:16px;pointer-events:none;transition:background .1s;}
+  .cert-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.75rem;font-weight:500;margin-bottom:18px;}
+  .cert-year{font-family:'DM Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.25);letter-spacing:.15em;margin-bottom:10px;}
+  .cert-name{font-family:'DM Sans',sans-serif;font-weight:600;font-size:.95rem;color:#fff;line-height:1.35;margin-bottom:8px;}
+  .cert-issuer{color:rgba(255,255,255,.35);font-size:.8rem;margin-bottom:14px;}
+  .cert-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .cert-tag{font-size:.68rem;padding:3px 10px;border-radius:4px;font-family:'DM Mono',monospace;}
+  .cert-link{color:rgba(255,255,255,.35);font-size:.75rem;font-family:'DM Mono',monospace;margin-top:20px;transition:color .2s;text-decoration:none;display:inline-block;}
+  .cert-card:hover .cert-link{color:inherit;}
+
+  /* PROJECTS */
+  .proj-list{display:flex;flex-direction:column;}
+  .proj-row{padding:30px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;}
+  .proj-meta{min-width:160px;}
+  .proj-num{font-family:'DM Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.12em;}
+  .proj-title{font-family:'DM Sans',sans-serif;font-weight:600;font-size:1.05rem;color:#fff;margin-top:8px;}
+  .proj-sub{color:rgba(255,255,255,.27);font-size:.76rem;margin-top:4px;}
+  .proj-desc{color:rgba(255,255,255,.42);font-size:.87rem;line-height:1.78;flex:1;min-width:220px;padding-top:22px;}
+
+  /* CONTACT */
+  .contact-btns{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* ORB */
+  .orb-bg{position:absolute;border-radius:50%;pointer-events:none;}
+
+  /* FOOTER */
+  footer{border-top:1px solid rgba(255,255,255,.04);padding:22px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .foot-logo{font-family:'DM Mono',monospace;font-size:.78rem;color:rgba(255,255,255,.2);}
+  .foot-year{font-family:'DM Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.15);}
+
+  @media(max-width:768px){
+    .two-col,.skills-grid,.cert-grid{grid-template-columns:1fr!important;}
+    .nav-links{display:none!important;}
+    .hamburger{display:flex!important;}
+    #hero{padding-top:90px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="">
+  <div class="nav-inner">
+    <span class="logo">sai<span>.dev</span></span>
+    <div class="nav-links">
+      <button class="nav-btn act" onclick="go(&#39;about&#39;)">About</button>
+      <button class="nav-btn" onclick="go(&#39;skills&#39;)">Skills</button>
+      <button class="nav-btn" onclick="go(&#39;experience&#39;)">Experience</button>
+      <button class="nav-btn" onclick="go(&#39;certifications&#39;)">Certifications</button>
+      <button class="nav-btn" onclick="go(&#39;projects&#39;)">Projects</button>
+      <button class="nav-btn" onclick="go(&#39;contact&#39;)">Contact</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mob-menu" id="mob-menu">
+    <button class="nav-btn act" onclick="go(&#39;about&#39;)">About</button>
+    <button class="nav-btn" onclick="go(&#39;skills&#39;)">Skills</button>
+    <button class="nav-btn" onclick="go(&#39;experience&#39;)">Experience</button>
+    <button class="nav-btn" onclick="go(&#39;certifications&#39;)">Certifications</button>
+    <button class="nav-btn" onclick="go(&#39;projects&#39;)">Projects</button>
+    <button class="nav-btn" onclick="go(&#39;contact&#39;)">Contact</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero-wrap" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(124,58,237,.07);filter:blur(80px);top:60px;left:-80px;pointer-events:none;"></div>
+  <div style="position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(16,185,129,.05);filter:blur(80px);top:30%;left:60%;pointer-events:none;"></div>
+  <div id="hero" style="position:relative;z-index:1;">
+    <div class="arc-wrap">
+      <div class="arc-inner" id="arc-inner">
+        <div class="orb"></div>
+      <div class="tile" style="background: rgba(255, 255, 255, 0.1); transform: translate(-210px, -4.50058e-15px) rotateX(49.5deg) rotateZ(-90deg); animation: 3s ease-in-out 0s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.12); transform: translate(-208.58px, -8.53283px) rotateX(45.8333deg) rotateZ(-83.3333deg); animation: 3s ease-in-out 0.06s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.14); transform: translate(-204.339px, -16.9503px) rotateX(42.1667deg) rotateZ(-76.6667deg); animation: 3s ease-in-out 0.12s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.165); transform: translate(-197.335px, -25.1385px) rotateX(38.5deg) rotateZ(-70deg); animation: 3s ease-in-out 0.18s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.184); transform: translate(-187.663px, -32.9867px) rotateX(34.8333deg) rotateZ(-63.3333deg); animation: 3s ease-in-out 0.24s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.208); transform: translate(-175.452px, -40.3889px) rotateX(31.1667deg) rotateZ(-56.6667deg); animation: 3s ease-in-out 0.3s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.227); transform: translate(-160.869px, -47.2449px) rotateX(27.5deg) rotateZ(-50deg); animation: 3s ease-in-out 0.36s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.25); transform: translate(-144.111px, -53.462px) rotateX(23.8333deg) rotateZ(-43.3333deg); animation: 3s ease-in-out 0.42s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.27); transform: translate(-125.403px, -58.9561px) rotateX(20.1667deg) rotateZ(-36.6667deg); animation: 3s ease-in-out 0.48s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.294); transform: translate(-105px, -63.6529px) rotateX(16.5deg) rotateZ(-30deg); animation: 3s ease-in-out 0.54s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.314); transform: translate(-83.1768px, -67.4889px) rotateX(12.8333deg) rotateZ(-23.3333deg); animation: 3s ease-in-out 0.6s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.337); transform: translate(-60.2287px, -70.4122px) rotateX(9.16667deg) rotateZ(-16.6667deg); animation: 3s ease-in-out 0.66s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.357); transform: translate(-36.4661px, -72.3834px) rotateX(5.5deg) rotateZ(-10deg); animation: 3s ease-in-out 0.72s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.38); transform: translate(-12.2104px, -73.3756px) rotateX(1.83333deg) rotateZ(-3.33333deg); animation: 3s ease-in-out 0.78s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.4); transform: translate(12.2104px, -73.3756px) rotateX(-1.83333deg) rotateZ(3.33333deg); animation: 3s ease-in-out 0.84s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.42); transform: translate(36.4661px, -72.3834px) rotateX(-5.5deg) rotateZ(10deg); animation: 3s ease-in-out 0.9s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.443); transform: translate(60.2287px, -70.4122px) rotateX(-9.16667deg) rotateZ(16.6667deg); animation: 3s ease-in-out 0.96s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.463); transform: translate(83.1768px, -67.4889px) rotateX(-12.8333deg) rotateZ(23.3333deg); animation: 3s ease-in-out 1.02s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.486); transform: translate(105px, -63.6529px) rotateX(-16.5deg) rotateZ(30deg); animation: 3s ease-in-out 1.08s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.506); transform: translate(125.403px, -58.9561px) rotateX(-20.1667deg) rotateZ(36.6667deg); animation: 3s ease-in-out 1.14s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.53); transform: translate(144.111px, -53.462px) rotateX(-23.8333deg) rotateZ(43.3333deg); animation: 3s ease-in-out 1.2s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.55); transform: translate(160.869px, -47.2449px) rotateX(-27.5deg) rotateZ(50deg); animation: 3s ease-in-out 1.26s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.573); transform: translate(175.452px, -40.3889px) rotateX(-31.1667deg) rotateZ(56.6667deg); animation: 3s ease-in-out 1.32s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.592); transform: translate(187.663px, -32.9867px) rotateX(-34.8333deg) rotateZ(63.3333deg); animation: 3s ease-in-out 1.38s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.616); transform: translate(197.335px, -25.1385px) rotateX(-38.5deg) rotateZ(70deg); animation: 3s ease-in-out 1.44s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.635); transform: translate(204.339px, -16.9503px) rotateX(-42.1667deg) rotateZ(76.6667deg); animation: 3s ease-in-out 1.5s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.66); transform: translate(208.58px, -8.53283px) rotateX(-45.8333deg) rotateZ(83.3333deg); animation: 3s ease-in-out 1.56s infinite alternate none running tileGlow;"></div><div class="tile" style="background: rgba(255, 255, 255, 0.68); transform: translate(210px, -4.50058e-15px) rotateX(-49.5deg) rotateZ(90deg); animation: 3s ease-in-out 1.62s infinite alternate none running tileGlow;"></div></div>
+    </div>
+    <div class="hero-text">
+      <p class="eyebrow">Available · Surat, Gujarat, India</p>
+      <h1 class="hero-title">Sai Vigneshwar<br><span style="color:rgba(255,255,255,.22)">Anabathula</span></h1>
+      <p class="hero-sub" id="typed-text">Business analyst, marketer, and data practitioner.<br>BBA candidate at VNSGU, Surat.<span class="cursor">|</span></p>
+      <div class="hero-btns">
+        <a href="file:///C:/Users/saivi/Downloads/portfolio.html#contact" class="pill-btn" onclick="go(&#39;contact&#39;);return false;">Get in Touch</a>
+        <a href="file:///C:/Users/saivi/Downloads/portfolio.html#experience" class="ghost-btn" onclick="go(&#39;experience&#39;);return false;">View Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(59,130,246,.05);filter:blur(100px);top:-40px;right:0;pointer-events:none;"></div>
+  <div class="inner">
+    <p class="eyebrow">About</p>
+    <div class="two-col">
+      <div>
+        <h2 class="headline" style="margin-bottom:22px;">The person<br>behind the work</h2>
+        <p class="body-txt" style="margin-bottom:14px;">Final-year BBA student at Maniba College of Business Administration (VNSGU). My background started in Electrical &amp; Electronics Engineering — that pivot shaped how I think: systematically, with data, but always with a commercial eye.</p>
+        <p class="body-txt">I've built real experience across B2B client management, bookkeeping, data analytics, and D2C marketing. Targeting roles where I can own problems end-to-end, not just support them.</p>
+      </div>
+      <div class="tilt-card" style="perspective:800px;">
+        <div class="info-table" style="transition:transform .15s ease;transform-style:preserve-3d;position:relative;">
+          <div style="position:absolute;inset:0;border-radius:14px;pointer-events:none;z-index:2;" id="about-shine"></div>
+          <div class="info-row"><span class="info-key">Education</span><span class="info-val">BBA — Maniba College, VNSGU (2025)</span></div>
+          <div class="info-row"><span class="info-key">Open To</span><span class="info-val">Business Analysis · Marketing · Data Analytics</span></div>
+          <div class="info-row"><span class="info-key">Location</span><span class="info-val">Surat, Gujarat, India</span></div>
+          <div class="info-row"><span class="info-key">Languages</span><span class="info-val">English · Gujarati · Hindi</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="inner">
+    <p class="eyebrow">Skills</p>
+    <h2 class="headline" style="margin-bottom:44px;">What I bring</h2>
+    <div class="skills-grid" id="skills-grid"><div class="skill-card" style="transform-style: preserve-3d;"><p class="skill-cat">Analytics &amp; Data</p><div class="chips"><span class="chip">Power BI</span><span class="chip">Excel (Advanced)</span><span class="chip">Data Visualization</span><span class="chip">Financial Reporting</span><span class="chip">Market Research</span></div></div><div class="skill-card" style="transform-style: preserve-3d;"><p class="skill-cat">Marketing</p><div class="chips"><span class="chip">Digital Marketing</span><span class="chip">Brand Strategy</span><span class="chip">Content Strategy</span><span class="chip">D2C Marketing</span><span class="chip">Campaign Planning</span></div></div><div class="skill-card" style="transform-style: preserve-3d;"><p class="skill-cat">Business</p><div class="chips"><span class="chip">B2B Client Management</span><span class="chip">Business Development</span><span class="chip">Stakeholder Management</span><span class="chip">Bookkeeping</span><span class="chip">Business Analysis</span></div></div><div class="skill-card" style="transform-style: preserve-3d; transform: rotateX(0deg) rotateY(0deg); transition: transform 0.5s;"><p class="skill-cat">Tools</p><div class="chips"><span class="chip">Zoho CRM</span><span class="chip">MS Office Suite</span><span class="chip">Google Analytics</span><span class="chip">Canva</span><span class="chip">SQL (Basic)</span></div></div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div style="position:absolute;width:350px;height:350px;border-radius:50%;background:rgba(124,58,237,.06);filter:blur(100px);top:20%;left:-100px;pointer-events:none;"></div>
+  <div class="inner">
+    <p class="eyebrow">Experience</p>
+    <h2 class="headline" style="margin-bottom:44px;">Where I've worked</h2>
+    <div class="exp-list" id="exp-list"><div class="exp-card" style="transform-style: preserve-3d; transform: rotateX(0deg) rotateY(0deg); transition: transform 0.5s;">
+      <div class="exp-head">
+        <div><div class="exp-role">B2B Client Relations Executive</div><div class="exp-co">Sarin Technologies Pvt. Ltd.</div></div>
+        <span class="exp-period">2023 – 2024</span>
+      </div>
+      <ul class="exp-pts"><li class="exp-pt"><span class="exp-dash">—</span>Managed a portfolio of enterprise B2B clients as primary point of contact</li><li class="exp-pt"><span class="exp-dash">—</span>Coordinated cross-functional teams to ensure timely delivery and satisfaction</li><li class="exp-pt"><span class="exp-dash">—</span>Documented client requirements and mapped stakeholder workflows</li></ul></div><div class="exp-card" style="transform-style: preserve-3d;">
+      <div class="exp-head">
+        <div><div class="exp-role">Marketing Intern</div><div class="exp-co">Cassidy Cosmetics</div></div>
+        <span class="exp-period">2024 – 2025</span>
+      </div>
+      <ul class="exp-pts"><li class="exp-pt"><span class="exp-dash">—</span>Developed digital marketing campaigns and tracked performance metrics</li><li class="exp-pt"><span class="exp-dash">—</span>Built a full-year Excel financial tracker and formal P&amp;L for FY 2025–2026</li><li class="exp-pt"><span class="exp-dash">—</span>Assisted in brand positioning and content strategy for D2C launches</li></ul></div><div class="exp-card" style="transform-style: preserve-3d; transform: rotateX(0deg) rotateY(0deg); transition: transform 0.5s;">
+      <div class="exp-head">
+        <div><div class="exp-role">Data Analytics Intern</div><div class="exp-co">Codec Technologies Pvt. Ltd.</div></div>
+        <span class="exp-period">Dec 2025 – Jan 2026</span>
+      </div>
+      <ul class="exp-pts"><li class="exp-pt"><span class="exp-dash">—</span>Completed 1-month AICTE &amp; ICAC approved internship program</li><li class="exp-pt"><span class="exp-dash">—</span>Analyzed business datasets and produced visual dashboards for reporting</li><li class="exp-pt"><span class="exp-dash">—</span>Applied data cleaning and transformation techniques to improve accuracy</li></ul></div><div class="exp-card" style="transform-style: preserve-3d;">
+      <div class="exp-head">
+        <div><div class="exp-role">Bookkeeper</div><div class="exp-co">Sankalp Creations</div></div>
+        <span class="exp-period">2022 – 2023</span>
+      </div>
+      <ul class="exp-pts"><li class="exp-pt"><span class="exp-dash">—</span>Maintained accurate financial records and reconciled monthly accounts</li><li class="exp-pt"><span class="exp-dash">—</span>Prepared financial summaries and reports for management review</li></ul></div></div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section" id="certifications">
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(16,185,129,.05);filter:blur(100px);top:0;right:10%;pointer-events:none;"></div>
+  <div class="inner">
+    <p class="eyebrow">Certifications</p>
+    <h2 class="headline" style="margin-bottom:44px;">Credentials</h2>
+    <div class="cert-grid" id="cert-grid"><div style="perspective: 800px;"><div class="cert-card linkable" style="transform: rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1); transition: transform 0.5s, box-shadow 0.3s, border-color 0.3s;">
+      <div class="cert-top-bar" style="background:#1a8cff;"></div>
+      <div class="cert-shine" id="shine-D" style="background: none;"></div>
+      <div>
+        <div class="cert-icon" style="background:#1a8cff18;border:1px solid #1a8cff33;color:#1a8cff;">D</div>
+        <p class="cert-year">Jun 2026</p>
+        <h3 class="cert-name">Data Analytics Job Simulation</h3>
+        <p class="cert-issuer">Deloitte Australia × Forage</p>
+        <div class="cert-tags"><span class="cert-tag" style="background:#1a8cff12;border:1px solid #1a8cff30;color:#1a8cff;">Data Analysis</span><span class="cert-tag" style="background:#1a8cff12;border:1px solid #1a8cff30;color:#1a8cff;">Forensic Technology</span></div>
+      </div>
+      <a class="cert-link" style="color:#1a8cff88;" href="https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a382a9021444f205068e5dc_1782104661706_completion_certificate.pdf" target="_blank" onclick="event.stopPropagation()">View Certificate ↗</a>
+    </div></div><div style="perspective: 800px;"><div class="cert-card linkable" style="transform: rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1); transition: transform 0.5s, box-shadow 0.3s, border-color 0.3s;">
+      <div class="cert-top-bar" style="background:#0056d2;"></div>
+      <div class="cert-shine" id="shine-C" style="background: none;"></div>
+      <div>
+        <div class="cert-icon" style="background:#0056d218;border:1px solid #0056d233;color:#0056d2;">C</div>
+        <p class="cert-year">Jun 2026</p>
+        <h3 class="cert-name">PowerBI for Beginners: Sales Data Exploration</h3>
+        <p class="cert-issuer">Coursera</p>
+        <div class="cert-tags"><span class="cert-tag" style="background:#0056d212;border:1px solid #0056d230;color:#0056d2;">Power BI</span><span class="cert-tag" style="background:#0056d212;border:1px solid #0056d230;color:#0056d2;">Data Viz</span></div>
+      </div>
+      <a class="cert-link" style="color:#0056d288;" href="https://coursera.org/verify/9ZWGCLIR314E" target="_blank" onclick="event.stopPropagation()">View Certificate ↗</a>
+    </div></div><div style="perspective: 800px;"><div class="cert-card" style="transform: rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1); transition: transform 0.5s, box-shadow 0.3s, border-color 0.3s;">
+      <div class="cert-top-bar" style="background:#7c3aed;"></div>
+      <div class="cert-shine" id="shine-CT" style="background: none;"></div>
+      <div>
+        <div class="cert-icon" style="background:#7c3aed18;border:1px solid #7c3aed33;color:#7c3aed;">CT</div>
+        <p class="cert-year">Jan 2026</p>
+        <h3 class="cert-name">Data Analytics Training</h3>
+        <p class="cert-issuer">Codec Technologies × ICAC</p>
+        <div class="cert-tags"><span class="cert-tag" style="background:#7c3aed12;border:1px solid #7c3aed30;color:#7c3aed;">ICAC Recognized</span><span class="cert-tag" style="background:#7c3aed12;border:1px solid #7c3aed30;color:#7c3aed;">ISO Certified</span></div>
+      </div>
+      
+    </div></div><div style="perspective: 800px;"><div class="cert-card" style="transform: rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1); transition: transform 0.5s, box-shadow 0.3s, border-color 0.3s;">
+      <div class="cert-top-bar" style="background:#059669;"></div>
+      <div class="cert-shine" id="shine-NI" style="background: none;"></div>
+      <div>
+        <div class="cert-icon" style="background:#05966918;border:1px solid #05966933;color:#059669;">NI</div>
+        <p class="cert-year">Jan 2026</p>
+        <h3 class="cert-name">Certificate of Internship – Data Analytics</h3>
+        <p class="cert-issuer">Codec Technologies × NIP</p>
+        <div class="cert-tags"><span class="cert-tag" style="background:#05966912;border:1px solid #05966930;color:#059669;">AICTE Approved</span><span class="cert-tag" style="background:#05966912;border:1px solid #05966930;color:#059669;">National Internship Portal</span></div>
+      </div>
+      
+    </div></div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="inner">
+    <p class="eyebrow">Projects</p>
+    <h2 class="headline" style="margin-bottom:44px;">Selected work</h2>
+    <div class="proj-list" id="proj-list"><div class="proj-row">
+      <div class="proj-meta">
+        <div class="proj-num">01</div>
+        <div class="proj-title">Polorizer</div>
+        <div class="proj-sub">Brand &amp; Digital Marketing Analysis</div>
+      </div>
+      <p class="proj-desc">End-to-end brand audit of an Indian D2C fragrance brand — personas, competitive positioning, a five-pillar strategy, and a 90-day roadmap.</p></div><div class="proj-row">
+      <div class="proj-meta">
+        <div class="proj-num">02</div>
+        <div class="proj-title">The Ledger Room</div>
+        <div class="proj-sub">Personal Finance Dashboard</div>
+      </div>
+      <p class="proj-desc">Financial analysis dashboard tracking Indian equity and debt markets, mutual funds, thematic sector bets, and individual equity positions.</p></div><div class="proj-row">
+      <div class="proj-meta">
+        <div class="proj-num">03</div>
+        <div class="proj-title">Cassidy Financials</div>
+        <div class="proj-sub">Financial Reporting &amp; Analysis</div>
+      </div>
+      <p class="proj-desc">Full FY 2025–2026 financial tracker with projected figures, P&amp;L documentation, and variance analysis for a D2C cosmetics brand.</p></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(124,58,237,.07);filter:blur(120px);top:-60px;left:30%;pointer-events:none;"></div>
+  <div class="inner" style="position:relative;z-index:1;">
+    <p class="eyebrow">Contact</p>
+    <h2 class="headline" style="margin-bottom:18px;max-width:480px;">Open to the right opportunity</h2>
+    <p class="body-txt" style="max-width:460px;margin-bottom:44px;">Looking for roles in Business Analysis, Marketing, and Data Analytics. If you have a problem that needs clear thinking and data — reach out.</p>
+    <div class="contact-btns">
+      <a href="mailto:Saivigneshwar99@gmail.com" class="pill-btn">Saivigneshwar99@gmail.com</a>
+      <a href="https://www.linkedin.com/in/sai-vigneshwar-anabathula" target="_blank" class="ghost-btn">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-logo">sai.dev</span>
+  <span class="foot-year">© 2026</span>
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────
+const SKILLS = {
+  "Analytics & Data": ["Power BI","Excel (Advanced)","Data Visualization","Financial Reporting","Market Research"],
+  "Marketing": ["Digital Marketing","Brand Strategy","Content Strategy","D2C Marketing","Campaign Planning"],
+  "Business": ["B2B Client Management","Business Development","Stakeholder Management","Bookkeeping","Business Analysis"],
+  "Tools": ["Zoho CRM","MS Office Suite","Google Analytics","Canva","SQL (Basic)"],
+};
+
+const EXPERIENCES = [
+  { role:"B2B Client Relations Executive", company:"Sarin Technologies Pvt. Ltd.", period:"2023 – 2024", points:["Managed a portfolio of enterprise B2B clients as primary point of contact","Coordinated cross-functional teams to ensure timely delivery and satisfaction","Documented client requirements and mapped stakeholder workflows"] },
+  { role:"Marketing Intern", company:"Cassidy Cosmetics", period:"2024 – 2025", points:["Developed digital marketing campaigns and tracked performance metrics","Built a full-year Excel financial tracker and formal P&L for FY 2025–2026","Assisted in brand positioning and content strategy for D2C launches"] },
+  { role:"Data Analytics Intern", company:"Codec Technologies Pvt. Ltd.", period:"Dec 2025 – Jan 2026", points:["Completed 1-month AICTE & ICAC approved internship program","Analyzed business datasets and produced visual dashboards for reporting","Applied data cleaning and transformation techniques to improve accuracy"] },
+  { role:"Bookkeeper", company:"Sankalp Creations", period:"2022 – 2023", points:["Maintained accurate financial records and reconciled monthly accounts","Prepared financial summaries and reports for management review"] },
+];
+
+const CERTIFICATIONS = [
+  { name:"Data Analytics Job Simulation", issuer:"Deloitte Australia × Forage", year:"Jun 2026", tags:["Data Analysis","Forensic Technology"], link:"https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a382a9021444f205068e5dc_1782104661706_completion_certificate.pdf", color:"#1a8cff", icon:"D" },
+  { name:"PowerBI for Beginners: Sales Data Exploration", issuer:"Coursera", year:"Jun 2026", tags:["Power BI","Data Viz"], link:"https://coursera.org/verify/9ZWGCLIR314E", color:"#0056d2", icon:"C" },
+  { name:"Data Analytics Training", issuer:"Codec Technologies × ICAC", year:"Jan 2026", tags:["ICAC Recognized","ISO Certified"], link:null, color:"#7c3aed", icon:"CT" },
+  { name:"Certificate of Internship – Data Analytics", issuer:"Codec Technologies × NIP", year:"Jan 2026", tags:["AICTE Approved","National Internship Portal"], link:null, color:"#059669", icon:"NI" },
+];
+
+const PROJECTS = [
+  { title:"Polorizer", sub:"Brand & Digital Marketing Analysis", desc:"End-to-end brand audit of an Indian D2C fragrance brand — personas, competitive positioning, a five-pillar strategy, and a 90-day roadmap." },
+  { title:"The Ledger Room", sub:"Personal Finance Dashboard", desc:"Financial analysis dashboard tracking Indian equity and debt markets, mutual funds, thematic sector bets, and individual equity positions." },
+  { title:"Cassidy Financials", sub:"Financial Reporting & Analysis", desc:"Full FY 2025–2026 financial tracker with projected figures, P&L documentation, and variance analysis for a D2C cosmetics brand." },
+];
+
+// ─── ARC ANIMATION ────────────────────────────────────
+function buildArc() {
+  const container = document.getElementById('arc-inner');
+  const count = 28;
+  for (let i = 0; i < count; i++) {
+    const angle = (i / (count - 1)) * 180 - 90;
+    const rad = angle * Math.PI / 180;
+    const radius = 210;
+    const x = Math.sin(rad) * radius;
+    const y = -Math.cos(rad) * radius * 0.35;
+    const tiltX = -angle * 0.55;
+    const opacity = 0.1 + (i / count) * 0.6;
+    const div = document.createElement('div');
+    div.className = 'tile';
+    div.style.cssText = `background:rgba(255,255,255,${opacity});transform:translate(${x}px,${y}px) rotateX(${tiltX}deg) rotateZ(${angle}deg);animation:tileGlow 3s ease-in-out ${i*0.06}s infinite alternate;`;
+    container.appendChild(div);
+  }
+}
+
+// ─── TYPING EFFECT ────────────────────────────────────
+function typeText() {
+  const el = document.getElementById('typed-text');
+  const text = "Business analyst, marketer, and data practitioner.\nBBA candidate at VNSGU, Surat.";
+  let i = 0;
+  el.innerHTML = '<span class="cursor">|</span>';
+  const interval = setInterval(() => {
+    if (i < text.length) {
+      const char = text[i] === '\n' ? '<br>' : text[i];
+      el.innerHTML = text.slice(0,i+1).replace(/\n/g,'<br>') + '<span class="cursor">|</span>';
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 40);
+}
+
+// ─── SKILLS ───────────────────────────────────────────
+function buildSkills() {
+  const grid = document.getElementById('skills-grid');
+  Object.entries(SKILLS).forEach(([cat, items]) => {
+    const card = document.createElement('div');
+    card.className = 'skill-card';
+    card.innerHTML = `<p class="skill-cat">${cat}</p><div class="chips">${items.map(s=>`<span class="chip">${s}</span>`).join('')}</div>`;
+    add3DTilt(card);
+    grid.appendChild(card);
+  });
+}
+
+// ─── EXPERIENCE ───────────────────────────────────────
+function buildExperience() {
+  const list = document.getElementById('exp-list');
+  EXPERIENCES.forEach(e => {
+    const card = document.createElement('div');
+    card.className = 'exp-card';
+    card.innerHTML = `
+      <div class="exp-head">
+        <div><div class="exp-role">${e.role}</div><div class="exp-co">${e.company}</div></div>
+        <span class="exp-period">${e.period}</span>
+      </div>
+      <ul class="exp-pts">${e.points.map(p=>`<li class="exp-pt"><span class="exp-dash">—</span>${p}</li>`).join('')}</ul>`;
+    add3DTilt(card);
+    list.appendChild(card);
+  });
+}
+
+// ─── CERTIFICATIONS (3D tilt + shine) ────────────────
+function buildCerts() {
+  const grid = document.getElementById('cert-grid');
+  CERTIFICATIONS.forEach(c => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'perspective:800px;';
+
+    const card = document.createElement('div');
+    card.className = 'cert-card' + (c.link ? ' linkable' : '');
+    if (c.link) card.onclick = () => window.open(c.link, '_blank');
+
+    card.innerHTML = `
+      <div class="cert-top-bar" style="background:${c.color};"></div>
+      <div class="cert-shine" id="shine-${c.icon}"></div>
+      <div>
+        <div class="cert-icon" style="background:${c.color}18;border:1px solid ${c.color}33;color:${c.color};">${c.icon}</div>
+        <p class="cert-year">${c.year}</p>
+        <h3 class="cert-name">${c.name}</h3>
+        <p class="cert-issuer">${c.issuer}</p>
+        <div class="cert-tags">${c.tags.map(t=>`<span class="cert-tag" style="background:${c.color}12;border:1px solid ${c.color}30;color:${c.color};">${t}</span>`).join('')}</div>
+      </div>
+      ${c.link ? `<a class="cert-link" style="color:${c.color}88;" href="${c.link}" target="_blank" onclick="event.stopPropagation()">View Certificate ↗</a>` : ''}
+    `;
+
+    // 3D tilt + shine
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const dx = (e.clientX - rect.left) / rect.width;
+      const dy = (e.clientY - rect.top) / rect.height;
+      const rotX = (dy - 0.5) * -18;
+      const rotY = (dx - 0.5) * 18;
+      card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(14px) scale(1.02)`;
+      card.style.transition = 'transform .08s ease, box-shadow .3s, border-color .3s';
+      card.style.boxShadow = `0 20px 60px rgba(0,0,0,.6), 0 0 30px ${c.color}22`;
+      card.style.borderColor = c.color + '55';
+      const shine = card.querySelector('.cert-shine');
+      shine.style.background = `radial-gradient(circle at ${dx*100}% ${dy*100}%, rgba(255,255,255,.07) 0%, transparent 60%)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0) rotateY(0) translateZ(0) scale(1)';
+      card.style.transition = 'transform .5s ease, box-shadow .3s, border-color .3s';
+      card.style.boxShadow = '';
+      card.style.borderColor = '';
+      card.querySelector('.cert-shine').style.background = 'none';
+    });
+
+    wrap.appendChild(card);
+    grid.appendChild(wrap);
+  });
+}
+
+// ─── PROJECTS ─────────────────────────────────────────
+function buildProjects() {
+  const list = document.getElementById('proj-list');
+  PROJECTS.forEach((p, i) => {
+    const row = document.createElement('div');
+    row.className = 'proj-row';
+    row.innerHTML = `
+      <div class="proj-meta">
+        <div class="proj-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="proj-title">${p.title}</div>
+        <div class="proj-sub">${p.sub}</div>
+      </div>
+      <p class="proj-desc">${p.desc}</p>`;
+    list.appendChild(row);
+  });
+}
+
+// ─── GENERIC 3D TILT ──────────────────────────────────
+function add3DTilt(el) {
+  el.style.transformStyle = 'preserve-3d';
+  el.addEventListener('mousemove', e => {
+    const rect = el.getBoundingClientRect();
+    const dx = (e.clientX - rect.left) / rect.width;
+    const dy = (e.clientY - rect.top) / rect.height;
+    el.style.transform = `rotateX(${(dy-.5)*-7}deg) rotateY(${(dx-.5)*7}deg)`;
+    el.style.transition = 'transform .08s ease';
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = 'rotateX(0) rotateY(0)';
+    el.style.transition = 'transform .5s ease';
+  });
+}
+
+// ─── NAV SCROLL ───────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  const sections = ['about','skills','experience','certifications','projects','contact'];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= 200 && rect.bottom >= 200) {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('act'));
+      document.querySelectorAll('.nav-btn').forEach(b => { if (b.getAttribute('onclick').includes(id)) b.classList.add('act'); });
+    }
+  });
+});
+
+function go(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  document.getElementById('mob-menu').classList.remove('open');
+}
+function toggleMenu() {
+  document.getElementById('mob-menu').classList.toggle('open');
+}
+
+// ─── INIT ─────────────────────────────────────────────
+buildArc();
+typeText();
+buildSkills();
+buildExperience();
+buildCerts();
+buildProjects();
+</script>
+
+
+</body></html>
